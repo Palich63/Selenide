@@ -1,5 +1,6 @@
 package ru.netology;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -11,7 +12,7 @@ public class TestCardDelivery {
 
     @Test
     void shouldCheckOrderCardWithDelivery() {
-//        Configuration.headless = true;
+        Configuration.headless = true;
         open("http://localhost:9999");
         $("[data-test-id='city']").$("[type='text']").setValue("Самара");
         // Вместо setValue использовал getValue чтобы по умолчанию установить ближайшую доступную дату и тест не
