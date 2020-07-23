@@ -22,6 +22,6 @@ public class TestCardDelivery {
         $$("[type='tel']").last().setValue("+79998885577");
         $("[data-test-id='agreement']").click();
         $$("[type='button']").find(exactText("Забронировать")).click();
-        $(withText("Успешно!")).waitUntil(visible, 12000);
+        $(withText("Успешно!")).waitUntil(visible, 15000);
     }
 }
