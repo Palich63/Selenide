@@ -14,7 +14,7 @@ public class TestCardDelivery {
     void shouldCheckOrderCardWithDelivery() {
         Configuration.headless = true;
         open("http://localhost:9999");
-        $$("[data-test-id]").first().$("[type='text']").setValue("Самара");
+        $("[data-test-id='city']").$("[type='text']").setValue("Самара");
         // Вместо setValue использовал getValue чтобы по умолчанию установить ближайшую доступную дату и тест не
         // пришлось бы править каждый раз как при использовании setValue
         $$("[type='tel']").first().getCssValue("value");
