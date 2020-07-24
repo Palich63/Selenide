@@ -9,7 +9,7 @@ branches:
 build: off
 
 install:
-  - java -jar ./artifacts/app--card-delivery.jar &
+  - java -jar ./artifacts/app-card-delivery.jar &
   - java -jar ./src/test/resources/webdrivermanager-4.0.0-fat.jar
 
 build_script:
