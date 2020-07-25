@@ -14,7 +14,7 @@ public class TestTab {
 
     @Test
     void shouldCheckOrderCardWithDelivery() {
-//        Configuration.headless = true;
+        Configuration.headless = true;
         open("http://localhost:9999");
         $("[data-test-id='city']").$("[type='text']").setValue("Ря");
         $$(".menu-item__control").find(exactText("Рязань")).click();
