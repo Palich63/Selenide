@@ -22,10 +22,13 @@ public class TestTab {
         open("http://localhost:9999");
         $("[data-test-id='city']").$("[type='text']").setValue("Ря");
         $$(".menu-item__control").find(exactText("Рязань")).click();
+
         LocalDate today = LocalDate.now();
         LocalDate plusWeek = today.plus(7, ChronoUnit.DAYS);
         int dayToday = today.getDayOfMonth();
         int day = plusWeek.getDayOfMonth();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        String text = plusWeek.format(formatter);
 
         $("[data-test-id='date']").$("[class='icon-button__content']").click();
 
@@ -33,11 +36,12 @@ public class TestTab {
         if (dayToday > day) {
             $("[data-step='1']").click();
             $("[class='popup__container']").$$("td.calendar__day").find(exactText(String.valueOf(day))).click();
-//            $$("[td.class='calendar__day']").find(exactText(String.valueOf(day))).click();
+        }
+        else {
+            $("[class='popup__container']").$$("td.calendar__day").find(exactText(String.valueOf(day))).click();
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String text = plusWeek.format(formatter);
+
 
         $("[data-test-id='date']").$("[type='tel']").sendKeys(Keys.CONTROL + "a" + Keys.BACK_SPACE);
         $("[data-test-id='date']").$("[type='tel']").setValue(text);
