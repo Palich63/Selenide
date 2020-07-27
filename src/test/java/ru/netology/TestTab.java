@@ -1,14 +1,11 @@
 package ru.netology;
 
-import com.codeborne.selenide.conditions.Value;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.ValueRange;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -32,15 +29,12 @@ public class TestTab {
 
         $("[data-test-id='date']").$("[class='icon-button__content']").click();
 
-
         if (dayToday > day) {
             $("[data-step='1']").click();
             $("[class='popup__container']").$$("td.calendar__day").find(exactText(String.valueOf(day))).click();
-        }
-        else {
+        } else {
             $("[class='popup__container']").$$("td.calendar__day").find(exactText(String.valueOf(day))).click();
         }
-
 
 
         $("[data-test-id='date']").$("[type='tel']").sendKeys(Keys.CONTROL + "a" + Keys.BACK_SPACE);
@@ -49,6 +43,6 @@ public class TestTab {
         $("[data-test-id='phone']").$("[type='tel']").setValue("+79998885577");
         $("[data-test-id='agreement']").click();
         $$("[type='button']").find(exactText("Забронировать")).click();
-        $(withText("Успешно!")).waitUntil(visible, 15000);
+        $(withText(String.format("%02d", plusWeek.getDayOfMonth()) + "." + String.format("%02d", plusWeek.getMonthValue()) + "." + plusWeek.getYear())).waitUntil(visible, 15000);
     }
 }
