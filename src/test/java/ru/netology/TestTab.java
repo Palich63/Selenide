@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestTab {
 
     @Test
-    void shouldCheckOrderCardWithDelivery() {
+    void shouldCheckEveryStepForOrder() {
         open("http://localhost:9999");
         $("[data-test-id='city']").$("[type='text']").setValue("Ря");
         $$(".menu-item__control").find(exactText("Рязань")).click();
