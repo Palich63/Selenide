@@ -24,7 +24,7 @@ public class TestTab {
         LocalDate plusWeek = today.plus(7, ChronoUnit.DAYS);
         int dayToday = today.getDayOfMonth();
         int day = plusWeek.getDayOfMonth();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String text = plusWeek.format(formatter);
 
         $("[data-test-id='date']").$("[class='icon-button__content']").click();
@@ -42,7 +42,7 @@ public class TestTab {
         $("[data-test-id='name']").$("[type='text']").setValue("Андреев Андрей");
         $("[data-test-id='phone']").$("[type='tel']").setValue("+79998885577");
         $("[data-test-id='agreement']").click();
-        $$("[type='button']").find(exactText("Забронировать")).click();
-        $(withText(String.format("%02d", plusWeek.getDayOfMonth()) + "." + String.format("%02d", plusWeek.getMonthValue()) + "." + plusWeek.getYear())).waitUntil(visible, 15000);
+        $$("[type='button']").find(exactText("Запланировать")).click();
+        $(withText(String.format(text))).waitUntil(visible, 15000);
     }
 }

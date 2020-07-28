@@ -21,7 +21,7 @@ public class TestCardDelivery {
 
         LocalDate today = LocalDate.now();
         LocalDate plusFourDay = today.plus(4, ChronoUnit.DAYS);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String text = plusFourDay.format(formatter);
 
         $("[data-test-id='date']").$("[type='tel']").sendKeys(Keys.CONTROL+"a"+Keys.BACK_SPACE);
@@ -30,6 +30,6 @@ public class TestCardDelivery {
         $("[data-test-id='phone']").$("[type='tel']").setValue("+79998885577");
         $("[data-test-id='agreement']").click();
         $$("[type='button']").find(exactText("Забронировать")).click();
-        $(withText(String.format("%02d",plusFourDay.getDayOfMonth())+"."+String.format("%02d",plusFourDay.getMonthValue())+"."+plusFourDay.getYear())).waitUntil(visible, 15000);
+        $(withText(String.format(text))).waitUntil(visible, 15000);
     }
 }
