@@ -42,7 +42,7 @@ public class TestTab {
         $("[data-test-id='name']").$("[type='text']").setValue("Андреев Андрей");
         $("[data-test-id='phone']").$("[type='tel']").setValue("+79998885577");
         $("[data-test-id='agreement']").click();
-        $$("[type='button']").find(exactText("Запланировать")).click();
+        $$("[type='button']").find(exactText("Забронировать")).click();
         $(withText(String.format(text))).waitUntil(visible, 15000);
     }
 }
